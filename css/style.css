@@ -1,0 +1,202 @@
+/* nulling */
+:root {
+    --blueColor: rgb(119, 199, 253);
+    --darkBlueColor: rgb(0, 114, 190);
+    --red: rgb(255, 0, 0);
+    --orange: rgb(255, 188, 5);
+    --grey: rgb(170, 170, 170);
+    --darkGrey: rgb(102, 102, 102);
+}
+
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+h1,h2,h3,h4,h5,h6,p{
+    padding: 0;
+}
+
+body{
+    margin: 0;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow: hidden;
+    align-items: center;
+}
+
+/* timer */
+
+.timer{
+    display: flex;
+    flex-direction: column;
+    max-width: 700px;
+    width: 100%;
+}
+
+.timer__wrapper{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 10px;
+}
+
+.timer__item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 700;
+    font-family: inherit;
+    font-size: 24px;
+    border: 1px solid #000;
+}
+
+.timer__item span{
+    font-size: 5em;
+    line-height: 1;
+}
+
+.timer__input{
+    margin: 20px auto 0;
+    padding: 5px 20px;
+    max-width: 40px;
+    border-radius: 50%;
+    border: 5px solid;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+
+    transition: .3s ease-in-out;
+    animation: colorInput 1s linear infinite alternate;
+}
+
+.timer__input_empty{
+    animation: inputEmpty .5s linear infinite alternate;
+}
+
+.timer__input_disabled{
+    animation: inputDisabled 1s linear infinite alternate;
+}
+
+.timer__input:focus{
+    max-width: 30%;
+    border-radius: 10px;
+    outline: none;
+    border-color: var(--blueColor);
+    box-shadow: 0px 0px 15px var(--blueColor);
+    animation: colorInput none;
+}
+
+.timer__input::placeholder{
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.button{
+    width: 150px;
+    text-transform: uppercase;
+    font-weight: 700;
+    background: none;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 4px 0px;
+    cursor: pointer;
+
+    transition: .2s ease;
+}
+
+.button:focus{
+    outline: none;
+}
+
+/* .button:active{
+    transform: translateY(4px);
+    box-shadow: 0px 0px 0px;
+} */
+
+.timer__buttons{
+    margin: 20px auto 0;
+}
+
+.timer__btn{
+    padding: 8px 0;
+    font-size: 1.5em;
+}
+
+.timer__btn_start{
+    background-color: var(--blueColor);
+    box-shadow: 0px 4px 0px rgb(72, 114, 141);
+}
+
+.timer__btn_reset{
+    background-color: rgb(255, 70, 70);
+    box-shadow: 0px 4px 0px rgb(145, 41, 41);
+}
+
+.timer__btn_start:active,
+.timer__btn_reset:active{
+    transform: translateY(4px);
+    box-shadow: 0px 0px 0px;
+}
+
+@keyframes colorInput{
+    0%{
+        border-color: var(--darkBlueColor);
+        box-shadow: 0px 0px 8px var(--darkBlueColor);
+    }
+    100%{
+        border-color: var(--blueColor);
+        box-shadow: 0px 0px 14px var(--blueColor);
+    }
+}
+
+@keyframes inputEmpty{
+    0%{
+        border-color: var(--red);
+        box-shadow: 0px 0px 8px var(--red);
+    }
+    100%{
+        border-color: var(--orange);
+        box-shadow: 0px 0px 14px var(--orange);
+    }
+}
+
+@keyframes inputDisabled{
+    0%{
+        border-color: var(--grey);
+        box-shadow: 0px 0px 8px var(--grey);
+    }
+    100%{
+        border-color: var(--darkGrey);
+        box-shadow: 0px 0px 14px var(--darkGrey);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
