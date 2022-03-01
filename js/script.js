@@ -63,11 +63,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
     input.addEventListener('input', (e) => {
         if (e.target.value.search(/\d/)){
             e.target.value = '';
-            e.target.style.borderColor = "red";
-        } else{
-            e.target.style.borderColor = "";
         }
-
     });
 
     function sendTime(){
