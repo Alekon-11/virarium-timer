@@ -62,7 +62,12 @@ document.addEventListener('DOMContentLoaded', (e) => {
     let input = document.querySelector('.timer__input');
     // console.dir();
 
-    
+    input.addEventListener('input', (e) => {
+        if(e.target.value.search(/\d/)){
+            e.target.value = '';
+        }
+
+    });
 
     function sendTime(){
         input = document.querySelector('.timer__input');
