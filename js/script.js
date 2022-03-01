@@ -66,7 +66,6 @@ document.addEventListener('DOMContentLoaded', (e) => {
             e.target.style.borderColor = "red";
         } else{
             e.target.style.borderColor = "";
-
         }
 
     });
