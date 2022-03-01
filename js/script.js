@@ -3,7 +3,10 @@
 document.addEventListener('DOMContentLoaded', (e) => {
     e.preventDefault();
 
-    // let deadLine = '2022-02-27';
+    let start = document.querySelector('#start'),
+        reset = document.querySelector('#reset'),
+        input = document.querySelector('.timer__input');
+
     let deadLine,
         index;
 
@@ -44,23 +47,18 @@ document.addEventListener('DOMContentLoaded', (e) => {
             min.textContent = getZero(minutes);
             sec.textContent = getZero(seconds);
 
-            if(total < 0 || index > 0){
+            if(total < 0 || index > 0 || !deadLine){
                 clearInterval(intId);
                 hour.textContent = '00';
                 min.textContent = '00';
                 sec.textContent = '00';
+                reset.click();
             }
         }
     }
 
-    // setTime(deadLine);
+    setTime(deadLine);
 
-    //------------------------------------------------------
-
-    let start = document.querySelector('#start'),
-        reset = document.querySelector('#reset');
-    let input = document.querySelector('.timer__input');
-    // console.dir();
 
     input.addEventListener('input', (e) => {
         if(e.target.value.search(/\d/)){
@@ -83,16 +81,19 @@ document.addEventListener('DOMContentLoaded', (e) => {
             input.classList.add('timer__input_empty');
             setTimeout(() => input.classList.remove('timer__input_empty'),2000);
         }
+    }
 
+    function clearInput(){
+        index++;
+        input.value = '';
+        input.disabled = false;
+        input.classList.remove('timer__input_disabled');
     }
 
     start.addEventListener('click', sendTime);
 
     reset.addEventListener('click', () => {
-        index++;
-        input.value = '';
-        input.disabled = false;
-        input.classList.remove('timer__input_disabled');
+        clearInput();
     });
 
     window.addEventListener('keyup', (e) => {
@@ -100,4 +101,26 @@ document.addEventListener('DOMContentLoaded', (e) => {
             sendTime();
         }
     });
+
+    window.addEventListener('keyup', (e) => {
+        if(e.key === "Escape"){
+            clearInput();
+        }
+    });
+
+
+//-------------------------------------------------------MODAL
+
+const modal = document.querySelector('.modal');
+
+modal.addEventListener("click", (e) => {
+    if(e.target && e.target.matches('.modal__close') || e.target.matches('.modal')){
+        
+    }
+});
+
+
+
+
+
 });

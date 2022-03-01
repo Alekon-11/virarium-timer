@@ -14,25 +14,39 @@
             <div class="timer">
 
                 <div class="timer__wrapper">
-                    <div class="timer__item">
-                        <span id="hours">00</span>
-                        часы
-                    </div>
-                    <div class="timer__item">
-                        <span id="minutes">00</span>
-                        минуты
-                    </div>
-                    <div class="timer__item">
-                        <span id="seconds">00</span>
-                        секунды
-                    </div>
-                </div>
 
-                <input type="text" maxlength="3" name="time" class="timer__input" placeholder="время в минутах">
+                    <div class="timer__time">
+                        <div class="timer__item">
+                            <span id="hours"></span>
+                            часы
+                        </div>
+                        <div class="timer__item">
+                            <span id="minutes"></span>
+                            минуты
+                        </div>
+                        <div class="timer__item">
+                            <span id="seconds"></span>
+                            секунды
+                        </div>
+                    </div>
+    
+                    <input type="text" maxlength="3" name="time" class="timer__input" placeholder="время в минутах">
+    
+                    <div class="timer__buttons">
+                        <button class="timer__btn timer__btn_start button" id="start">старт</button>
+                        <button class="timer__btn timer__btn_reset button" id="reset">сброс</button>
+                    </div>
 
-                <div class="timer__buttons">
-                    <button class="timer__btn timer__btn_start button" id="start">старт</button>
-                    <button class="timer__btn timer__btn_reset button" id="reset">сброс</button>
+                </div> <!--  timer wrapper -->
+            </div><!--  timer-->
+
+            <div class="modal">
+                <div class="modal__message">
+                    <div class="modal__text">введите имя команды \ игрока</div>
+                    <input type="text" name="teamName" class="modal__input" placeholder="Иван">
+                    <button class="modal__btn button" id="reset">готово</button>
+
+                    <div class="modal__close"></div>
                 </div>
             </div>
         </div>
