@@ -110,13 +110,35 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
 //-------------------------------------------------------MODAL
 
-const modal = document.querySelector('.modal');
+(function(){
+    const modal = document.querySelector('.modal'),
+      input = document.querySelector('.modal__input'),
+      btn = document.querySelector('.modal__btn'),
+      parent = document.querySelector('.timer__wrapper');
 
-modal.addEventListener("click", (e) => {
+    modal.addEventListener("click", (e) => {
     if(e.target && e.target.matches('.modal__close') || e.target.matches('.modal')){
-        
+        modal.classList.add('modal_hide');
     }
+
+    function crateUserName(content, parent) {
+        const userName = document.createElement('div');
+        userName.classList.add('modal__name');
+        userName.textContent = `${content}`;
+        parent.append(userName);
+    }
+
+    btn.addEventListener('click', () => {
+        crateUserName(input.value,parent);
+        modal.classList.add('modal_hide');
+    });
 });
+}());
+
+
+
+
+
 
 
 

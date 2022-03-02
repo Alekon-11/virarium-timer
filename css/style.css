@@ -210,8 +210,8 @@ body{
     position: fixed;
     top: 0;
     left: 0;
-    /* display: flex; */
-    display: none;
+    display: flex;
+    /* display: none; */
     justify-content: center;
     align-items: center;
     background-color: rgba(0,0,0,0.7);
@@ -295,8 +295,15 @@ body{
 
 }
 
+.modal_hide{
+    display: none;
+}
 
-
+.modal__name{
+    font-weight: 700;
+    font-size: 24px;
+    text-align: center;
+}
 
 
 
