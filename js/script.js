@@ -61,9 +61,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
 
     input.addEventListener('input', (e) => {
-        if (e.target.value.search(/\d/)){
-            e.target.value = '';
-        }
+        e.target.value = e.target.value.replace(/\D/,'');
     });
 
     function sendTime(){
@@ -125,7 +123,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
         const userName = document.createElement('div');
         userName.classList.add('modal__name');
         userName.textContent = `${content}`;
-        parent.append(userName);
+        parent.prepend(userName);
     }
 
     btn.addEventListener('click', () => {
