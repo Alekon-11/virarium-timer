@@ -47,7 +47,7 @@ body{
     align-items: center;
     background: url(../image/bg.jpg) center center no-repeat;
     background-size: cover;
-    /* filter: blur(6px); */
+    filter: blur(6px);
 }
 
 .timer__wrapper{

@@ -115,9 +115,11 @@ document.addEventListener('DOMContentLoaded', (e) => {
       parent = document.querySelector('.timer__wrapper');
 
     modal.addEventListener("click", (e) => {
-    if(e.target && e.target.matches('.modal__close') || e.target.matches('.modal')){
-        modal.classList.add('modal_hide');
-    }
+        if(e.target && e.target.matches('.modal__close') || e.target.matches('.modal')){
+            modal.classList.add('modal_hide');
+            blurLoading('.timer');
+        }
+    });
 
     function crateUserName(content, parent) {
         const userName = document.createElement('div');
@@ -129,10 +131,32 @@ document.addEventListener('DOMContentLoaded', (e) => {
     btn.addEventListener('click', () => {
         crateUserName(input.value,parent);
         modal.classList.add('modal_hide');
+        blurLoading('.timer');
     });
-});
-}());
 
+
+    function blurLoading(parent){
+        const elem = document.querySelector(parent);
+        const style = window.getComputedStyle(elem).filter;
+
+        let value = +style.slice(5,(style.length - 3));
+
+        let intID = setInterval(updateBlurValue, 20);
+
+        console.log(elem);
+
+        function updateBlurValue(){
+            if(value <= 0){
+                clearInterval(intID);
+            }
+            value -= (+style.slice(5,(style.length - 3)) / 100);
+            elem.style.filter = `blur(${value.toFixed(2)}px)`;
+        }
+    }
+
+
+
+}());
 
 
 
