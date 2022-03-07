@@ -99,12 +99,6 @@ document.addEventListener('DOMContentLoaded', (e) => {
         }
     });
 
-    window.addEventListener('keyup', (e) => {
-        if(e.key === "Escape"){
-            clearInput();
-        }
-    });
-
 
 //-------------------------------------------------------MODAL
 
@@ -116,7 +110,13 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
     modal.addEventListener("click", (e) => {
         if(e.target && e.target.matches('.modal__close') || e.target.matches('.modal')){
-            modal.classList.add('modal_hide');
+            blurLoading('.timer');
+        }
+    });
+
+    window.addEventListener('keyup', (e) => {
+        if(e.key === "Escape"){
+            modal.classList.add('hide');
             blurLoading('.timer');
         }
     });
@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
     btn.addEventListener('click', () => {
         crateUserName(input.value,parent);
-        modal.classList.add('modal_hide');
+        modal.classList.add('hide');
         blurLoading('.timer');
     });
 
@@ -154,12 +154,34 @@ document.addEventListener('DOMContentLoaded', (e) => {
         }
     }
 
-
-
 }());
 
 
+(function(){
+    let img = document.querySelectorAll('.timer__img'),
+        index = 0;
 
+    function showImage(list,i = 0){
+        list.forEach( item => {
+            item.classList.add('hide');
+            item.classList.remove('timer__img_move');
+        });
+
+        list[i].classList.remove('hide');
+        list[i].classList.add('timer__img_move');
+    }
+
+    setInterval(() => {
+        index++;
+        if(index >= img.length){
+            index = 0;
+        }
+        showImage(img,index);
+        console.log(index);
+
+    }, 4000);
+
+}());
 
 
 

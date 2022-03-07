@@ -39,15 +39,15 @@ body{
 /* timer */
 
 .timer{
+    position: relative;
     width: 100%;
     height: 100vh;
     padding: 0 15px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url(../image/bg.jpg) center center no-repeat;
-    background-size: cover;
     filter: blur(6px);
+    background-color: #000;
 }
 
 .timer__wrapper{
@@ -170,6 +170,36 @@ body{
 .timer__btn_reset:active{
     transform: translateY(4px);
     box-shadow: 0px 0px 0px;
+}
+
+.timer__images{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100vh;
+}
+
+.timer__img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.timer__img_move{
+    animation: bgMove 2s linear infinite alternate;
+}
+
+@keyframes bgMove{
+    0%{
+        transform: scale(1);
+        opacity: 0;
+    }
+    100%{
+        transform: scale(1.05);
+        opacity: 1;
+    }
 }
 
 @keyframes colorInput{
@@ -297,7 +327,7 @@ body{
 
 }
 
-.modal_hide{
+.hide{
     display: none;
 }
 
@@ -311,7 +341,6 @@ body{
     margin: 0 auto;
     padding: 10px 30px;
 }
-
 
 
 
