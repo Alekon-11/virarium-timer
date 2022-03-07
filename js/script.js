@@ -102,90 +102,85 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
 //-------------------------------------------------------MODAL
 
-(function(){
-    const modal = document.querySelector('.modal'),
-      input = document.querySelector('.modal__input'),
-      btn = document.querySelector('.modal__btn'),
-      parent = document.querySelector('.timer__wrapper');
+    (function(){
+        const modal = document.querySelector('.modal'),
+        input = document.querySelector('.modal__input'),
+        btn = document.querySelector('.modal__btn'),
+        parent = document.querySelector('.timer__wrapper');
 
-    modal.addEventListener("click", (e) => {
-        if(e.target && e.target.matches('.modal__close') || e.target.matches('.modal')){
-            blurLoading('.timer');
-        }
-    });
-
-    window.addEventListener('keyup', (e) => {
-        if(e.key === "Escape"){
-            modal.classList.add('hide');
-            blurLoading('.timer');
-        }
-    });
-
-    function crateUserName(content, parent) {
-        const userName = document.createElement('div');
-        userName.classList.add('modal__name');
-        userName.textContent = `${content}`;
-        parent.prepend(userName);
-    }
-
-    btn.addEventListener('click', () => {
-        crateUserName(input.value,parent);
-        modal.classList.add('hide');
-        blurLoading('.timer');
-    });
-
-
-    function blurLoading(parent){
-        const elem = document.querySelector(parent);
-        const style = window.getComputedStyle(elem).filter;
-
-        let value = +style.slice(5,(style.length - 3));
-
-        let intID = setInterval(updateBlurValue, 20);
-
-        console.log(elem);
-
-        function updateBlurValue(){
-            if(value <= 0){
-                clearInterval(intID);
+        modal.addEventListener("click", (e) => {
+            if(e.target && e.target.matches('.modal__close') || e.target.matches('.modal')){
+                modal.classList.add('hide');
+                blurLoading('.timer');
             }
-            value -= (+style.slice(5,(style.length - 3)) / 100);
-            elem.style.filter = `blur(${value.toFixed(2)}px)`;
-        }
-    }
-
-}());
-
-
-(function(){
-    let img = document.querySelectorAll('.timer__img'),
-        index = 0;
-
-    function showImage(list,i = 0){
-        list.forEach( item => {
-            item.classList.add('hide');
-            item.classList.remove('timer__img_move');
         });
 
-        list[i].classList.remove('hide');
-        list[i].classList.add('timer__img_move');
-    }
+        window.addEventListener('keyup', (e) => {
+            if(e.key === "Escape"){
+                modal.classList.add('hide');
+                blurLoading('.timer');
+            }
+        });
 
-    setInterval(() => {
-        index++;
-        if(index >= img.length){
-            index = 0;
+        function crateUserName(content, parent) {
+            const userName = document.createElement('div');
+            userName.classList.add('modal__name');
+            userName.textContent = `${content}`;
+            parent.prepend(userName);
         }
-        showImage(img,index);
-        console.log(index);
 
-    }, 4000);
-
-}());
-
-
+        btn.addEventListener('click', () => {
+            crateUserName(input.value,parent);
+            modal.classList.add('hide');
+            blurLoading('.timer');
+        });
 
 
+        function blurLoading(parent){
+            const elem = document.querySelector(parent);
+            const style = window.getComputedStyle(elem).filter;
+
+            let value = +style.slice(5,(style.length - 3));
+            // let value = +style.replace(/\D/, '');
+
+            let intID = setInterval(updateBlurValue, 20);
+
+            console.log(elem);
+
+            function updateBlurValue(){
+                if(value <= 0){
+                    clearInterval(intID);
+                }
+                value -= (+style.slice(5,(style.length - 3)) / 100);
+                elem.style.filter = `blur(${value.toFixed(2)}px)`;
+            }
+        }
+
+        
+    }());
 
 
+    (function(){
+        let img = document.querySelectorAll('.timer__img'),
+            index = 0;
+
+        function showImage(list,i = 0){
+            list.forEach( item => {
+                item.classList.add('hide');
+                item.classList.remove('timer__img_move');
+            });
+
+            list[i].classList.remove('hide');
+            list[i].classList.add('timer__img_move');
+        }
+
+        setInterval(() => {
+            index++;
+            if(index >= img.length){
+                index = 0;
+            }
+            showImage(img,index);
+        }, 6000);
+
+    }());
 });

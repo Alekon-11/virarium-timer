@@ -188,7 +188,7 @@ body{
 }
 
 .timer__img_move{
-    animation: bgMove 2s linear infinite alternate;
+    animation: bgMove 3s linear infinite alternate;
 }
 
 @keyframes bgMove{
