@@ -154,8 +154,6 @@ document.addEventListener('DOMContentLoaded', (e) => {
         }
     }
 
-
-
 }());
 
 
